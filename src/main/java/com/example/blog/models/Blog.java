@@ -1,11 +1,17 @@
 package com.example.blog.models;
 
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
+import jakarta.persistence.*;
+
+
+@Entity
+@Table(name="blogs")
 public class Blog {
-    private final String ID;
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private final String id;
     private String title;
     private String content;
     private final String userID;
@@ -31,8 +37,8 @@ public class Blog {
         this.comments.add(commentID);
     }
 
-    public String getID() {
-        return ID;
+    public String getId() {
+        return id;
     }
 
     public String getTitle() {
@@ -45,7 +51,7 @@ public class Blog {
 
 
     public Blog(String ID, String title, String content, String userID) {
-        this.ID = ID;
+        this.id = ID;
         this.title = title;
         this.content = content;
         this.userID = userID;
